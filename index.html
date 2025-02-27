@@ -1,12 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sandwich Builder</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="sandwich-builder">
+        <h1>Build Your Sandwich</h1>
+        
+        <div class="section">
+          <h2>Type</h2>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="regular" name="type" value="regular" checked>
+              <label for="regular">Regular<span class="price">$5.00</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="veggie" name="type" value="veggie">
+              <label for="veggie">Veggie<span class="price">$4.50</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="double" name="type" value="double">
+              <label for="double">Double<span class="price">$6.50</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="spicy" name="type" value="spicy">
+              <label for="spicy">Spicy<span class="price">$5.50</span></label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Bread</h2>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="white" name="bread" value="White Bread" checked>
+              <label for="white">White<span class="price">$0.00</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="wheat" name="bread" value="Whole Wheat">
+              <label for="wheat">Whole Wheat<span class="price">+$0.50</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="italian" name="bread" value="Italian">
+              <label for="italian">Italian<span class="price">$0.00</span></label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Cheese</h2>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="cheddar" name="cheese" value="Cheddar" checked>
+              <label for="cheddar">Cheddar<span class="price">$0.00</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="swiss" name="cheese" value="Swiss">
+              <label for="swiss">Swiss<span class="price">$0.00</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" id="gouda" name="cheese" value="Gouda">
+              <label for="gouda">Gouda<span class="price">+$1.00</span></label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Vegetables</h2>
+          <div class="options">
+            <div class="option">
+              <input type="checkbox" id="tomato" name="vegetable" value="Tomato">
+              <label for="tomato">Tomato<span class="price">+$0.30</span></label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="spinach" name="vegetable" value="Spinach">
+              <label for="spinach">Spinach<span class="price">+$0.50</span></label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="onion" name="vegetable" value="Onion">
+              <label for="onion">Onion<span class="price">+$0.30</span></label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="cucumber" name="vegetable" value="Cucumber">
+              <label for="cucumber">Cucumber<span class="price">+$0.30</span></label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Sauce</h2>
+          <div class="options">
+            <div class="option">
+              <input type="checkbox" id="mayo" name="sauce" value="Mayo">
+              <label for="mayo">Mayo<span class="price">$0.00</span></label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="mustard" name="sauce" value="Mustard">
+              <label for="mustard">Mustard<span class="price">$0.00</span></label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="chipotle" name="sauce" value="Chipotle">
+              <label for="chipotle">Chipotle<span class="price">+$0.50</span></label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="ranch" name="sauce" value="Ranch">
+              <label for="ranch">Ranch<span class="price">+$0.50</span></label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="total-section">
+          <button id="calculate-price">Calculate Price</button>
+          <div class="total-price">
+            <p>Total: <span id="total">$5.00</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/backend/sandwich.js"></script>
+  </body>
 </html>

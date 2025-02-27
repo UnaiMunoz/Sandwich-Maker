@@ -1,0 +1,140 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #213547;
+    background-color: #f5f5f5;
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  #app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .sandwich-builder {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #e65100;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+  
+  .section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+  }
+  
+  .section h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid #e65100;
+  }
+  
+  .options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .option {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .option:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+  }
+  
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+  }
+  
+  input[type="radio"]:checked + label,
+  input[type="checkbox"]:checked + label {
+    color: #e65100;
+    font-weight: 600;
+  }
+  
+  .price {
+    font-weight: normal;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .total-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  button {
+    background-color: #e65100;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 1rem;
+  }
+  
+  button:hover {
+    background-color: #d84315;
+  }
+  
+  .total-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  #total {
+    color: #e65100;
+  }
+  
+  @media (max-width: 600px) {
+    .options {
+      grid-template-columns: 1fr;
+    }
+    
+    #app {
+      padding: 1rem;
+    }
+    
+    .sandwich-builder {
+      padding: 1.5rem;
+    }
+  }

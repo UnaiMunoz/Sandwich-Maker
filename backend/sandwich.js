@@ -1,3 +1,5 @@
+import './style.css'
+
 // Clase para los tipos de sándwiches
 class SandwichType {
     constructor(name, config) {
@@ -67,7 +69,7 @@ class Sandwich {
 
             // Configuración adicional para tipos específicos
             if (typeName === "spicy") {
-                this.sauce = "Chipotle";
+                this.sauce = { Chipotle: 1 };
             }
         }
 
@@ -172,19 +174,89 @@ class SandwichMaker {
     }
 }
 
-// Ejemplos de uso
-const s1 = SandwichMaker.createSandwich("double");
-console.log(s1.displayDetails());
+// Initialize the sandwich builder UI
+document.addEventListener('DOMContentLoaded', () => {
+    let currentSandwich = new Sandwich('regular');
+    updateTotalPrice();
 
-const s2 = SandwichMaker.modifyIngredient(s1, "cheese", "Gouda");
-console.log(s2.displayDetails());
+    // Type selection
+    const typeRadios = document.querySelectorAll('input[name="type"]');
+    typeRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            currentSandwich = new Sandwich(e.target.value);
+            updateTotalPrice();
+            
+            // Update cheese selection based on sandwich type
+            if (e.target.value === 'veggie') {
+                document.getElementById('swiss').checked = true;
+            } else {
+                document.getElementById('cheddar').checked = true;
+            }
+            
+            // Auto-select chipotle for spicy type
+            if (e.target.value === 'spicy') {
+                document.getElementById('chipotle').checked = true;
+            } else {
+                document.getElementById('chipotle').checked = false;
+            }
+        });
+    });
 
-console.log("Final Price: $" + SandwichMaker.getPrice(s2));
+    // Bread selection
+    const breadRadios = document.querySelectorAll('input[name="bread"]');
+    breadRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            currentSandwich.changeIngredient('bread', e.target.value);
+            updateTotalPrice();
+        });
+    });
 
-// Uso alternativo con encadenamiento de métodos
-const customSandwich = new Sandwich("spicy")
-    .changeIngredient("bread", "Whole Wheat")
-    .changeIngredient("vegetable", "Spinach");
+    // Cheese selection
+    const cheeseRadios = document.querySelectorAll('input[name="cheese"]');
+    cheeseRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            currentSandwich.changeIngredient('cheese', e.target.value);
+            updateTotalPrice();
+        });
+    });
 
-console.log(customSandwich.displayDetails());
-console.log("Final Price: $" + customSandwich.calculatePrice());
+    // Vegetable selection
+    const vegetableCheckboxes = document.querySelectorAll('input[name="vegetable"]');
+    vegetableCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const selectedVegetables = {};
+            vegetableCheckboxes.forEach(veg => {
+                if (veg.checked) {
+                    selectedVegetables[veg.value] = 1;
+                }
+            });
+            currentSandwich.setIngredientQuantities('vegetable', selectedVegetables);
+            updateTotalPrice();
+        });
+    });
+
+    // Sauce selection
+    const sauceCheckboxes = document.querySelectorAll('input[name="sauce"]');
+    sauceCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const selectedSauces = {};
+            sauceCheckboxes.forEach(sauce => {
+                if (sauce.checked) {
+                    selectedSauces[sauce.value] = 1;
+                }
+            });
+            currentSandwich.setIngredientQuantities('sauce', selectedSauces);
+            updateTotalPrice();
+        });
+    });
+
+    // Calculate price button
+    document.getElementById('calculate-price').addEventListener('click', () => {
+        updateTotalPrice();
+    });
+
+    function updateTotalPrice() {
+        const price = currentSandwich.calculatePrice();
+        document.getElementById('total').textContent = `$${price.toFixed(2)}`;
+    }
+});
