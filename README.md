@@ -23,8 +23,8 @@ git clone https://github.com/usuario/Sandwich-Maker.git
 ### Estructura del proyecto
 
 /Sandwich-Maker
-│── index.html      # Página principal
-│── style.css       # Estilos de la aplicación
+│── index.html # Página principal
+│── style.css # Estilos de la aplicación
 │── backend/
-│   └── sandwich.js # Lógica de la aplicación (clases y funciones JavaScript)
-└── README.md       # Documentación del proyecto
+│ └── sandwich.js # Lógica de la aplicación (clases y funciones JavaScript)
+└── README.md # Documentación del proyecto
